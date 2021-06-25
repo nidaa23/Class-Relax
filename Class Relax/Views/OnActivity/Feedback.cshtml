@@ -1,0 +1,100 @@
+﻿@model Class_Relax.Models.Students
+@{
+    ViewBag.Title = "משוב";
+   
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+
+
+
+<style lang="he">
+    @@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+    fieldset, label {
+        margin: 0px;
+        padding: 0;
+    }
+
+    .content {
+        width: 750px;
+        position: center;
+        margin: 0 auto;
+    }
+
+ 
+
+    /****** Style Star Rating Widget *****/
+
+    .rating {
+        border: none;
+        float: left;
+    }
+
+        .rating > input {
+            display: none;
+        }
+
+        .rating > label:before {
+            margin-left: 60px;
+            margin-right: 60px;
+            margin-top: 60px;
+            font-size: 2em;
+            font-family: FontAwesome;
+            display: inline-block;
+            content: "\f005";
+        }
+
+        .rating > .half:before {
+            content: "\f089";
+            position: absolute;
+        }
+
+        .rating > label {
+            color: #ddd;
+            float: right;
+        }
+ 
+        /***** CSS Magic to Highlight Stars on Hover *****/
+
+        .rating > input:checked ~ label, /* show gold star when clicked */
+        .rating:not(:checked) > label:hover, /* hover current star */
+        .rating:not(:checked) > label:hover ~ label {
+            color: #FFD700;
+        }
+            /* hover previous stars in list */
+
+            .rating > input:checked + label:hover, /* hover current star when changing rating */
+            .rating > input:checked ~ label:hover,
+            .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+            .rating > input:checked ~ label:hover ~ label {
+                color: #FFED85;
+            }
+</style>
+<div class="content">
+    <h1 style="text-align:center; padding-top:20px; font-size:1.5em; margin:10px;">איך היתה החוויה בשבילכם</h1>
+
+
+    <fieldset class="rating">
+
+        <input type="radio" id="star5" name="rating" value="5" onclick="location.href='@Url.Action("AddFeedback", "OnActivity", new {@is_ = TempData["is_"], @fb= "5"})'" /><label class="full" for="star5" title="מעולה - 5 כוכבים"><p style="text-align:center; padding-top:15px;  color:black"> מעולה </p></label>
+        @Html.RadioButtonFor(m => m.Feedback, "5")
+        <input type="radio" id="star4" name="rating" value="4" onclick="location.href='@Url.Action("AddFeedback", "OnActivity", new {@is_ = TempData["is_"], @fb= "4"})'" /><label class="full" for="star4" title="בסדר גמור - 4 כוכבים"></label>
+        @Html.RadioButtonFor(m => m.Feedback, "4")
+        <input type="radio" id="star3" name="rating" value="3" onclick="location.href='@Url.Action("AddFeedback", "OnActivity", new {@is_ = TempData["is_"], @fb= "3"})'" /><label class="full" for="star3" title="לא רעה - 3 כוכבים"><p style="text-align:center; padding-top:15px;  color:black"> בינוני </p></label>
+        @Html.RadioButtonFor(m => m.Feedback, "3")
+        <input type="radio" id="star2" name="rating" value="2" onclick="location.href='@Url.Action("AddFeedback", "OnActivity", new {@is_ = TempData["is_"], @fb= "2"})'" /><label class="full" for="star2" title="לא משהו - 2 כוכבים"></label>
+        @Html.RadioButtonFor(m => m.Feedback, "2")
+        <input type="radio" id="star1" name="rating" value="1" onclick="location.href='@Url.Action("AddFeedback", "OnActivity", new {@is_ = TempData["is_"], @fb= "1"})'" /><label class="full" for="star1" title="גרועה - 1 כוכב"><p style="text-align:center; padding-top:15px; color:black"> לא משהו </p></label>
+        @Html.RadioButtonFor(m => m.Feedback, "1")
+    </fieldset>
+
+</div>
+@section Scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+}
+
+

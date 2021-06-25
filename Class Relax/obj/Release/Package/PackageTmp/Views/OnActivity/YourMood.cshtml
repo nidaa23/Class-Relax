@@ -1,0 +1,129 @@
+﻿@model Class_Relax.Models.Students
+@{
+    ViewBag.Title = "מצב רוח";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+
+    td {
+        padding-left: 20px;
+        padding-bottom: 40px;
+    }
+
+    div.polaroid {
+        width: 100px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        text-align: center;
+    }
+
+    div.container {
+        padding: 0.1px;
+    }
+
+        div .container p {
+            font-weight: 400;
+            color: black;
+        }
+
+    .ptitle {
+        color: black;
+        text-align: center;
+        font-weight: 400;
+        font-size: 25pt;
+        padding-bottom: 30px;
+    }
+</style>
+
+
+
+<div style="padding-top:20px;"></div>
+<div>
+    <div><p class="ptitle">  בחרו מצב רוח </p></div>
+
+    <table id="client-table" dir="rtl" align="center">
+
+        <tr>
+
+            <td>
+                <div class="polaroid">
+                    <a href='@Url.Action("LoadingPlayers", "OnActivity", new {@x = "2",@num= TempData["n"], @cp=TempData["p"]})'>
+                        <img src="~/images/happy.png" alt="Happy" style="width:80%;" />
+                        <div class="container"><p>שמח</p></div>
+                    </a>
+                </div>
+            </td>
+
+            <td>
+                <div class="polaroid">
+                    <a href='@Url.Action("LoadingPlayers", "OnActivity", new {@x = "3",@num= TempData["n"], @cp=TempData["p"]})'>
+                        <img src="~/images/energized.png" alt="Energized" style="width:80%;" />
+                        <div class="container"><p>אנרגטי</p></div>
+                    </a>
+                </div>
+            </td>
+            <td>
+                <div class="polaroid">
+                    <a href='@Url.Action("LoadingPlayers", "OnActivity", new {@x = "1",@num= TempData["n"], @cp=TempData["p"]})'>
+                        <img src="~/images/good.png" alt="Good" style="width:80%;" />
+                        <div class="container"><p>בסדר</p></div>
+                    </a>
+                </div>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <div class="polaroid">
+                    <a href='@Url.Action("LoadingPlayers", "OnActivity", new {@x = "5",@num= TempData["n"], @cp=TempData["p"]})'>
+                        <img src="~/images/tired.png" alt="Tired" style="width:80%;" />
+                        <div class="container"><p>עיף</p></div>
+                    </a>
+                </div>
+            </td>
+
+
+            <td>
+                <div class="polaroid">
+                    <a href='@Url.Action("LoadingPlayers", "OnActivity", new {@x = "4",@num= TempData["n"], @cp=TempData["p"]})'>
+                        <img src="~/images/sad.png" alt="Sad" style="width:80%;" />
+                        <div class="container"><p>עצוב</p></div>
+                    </a>
+                </div>
+            </td>
+            <td>
+                <div class="polaroid">
+                    <a href='@Url.Action("LoadingPlayers", "OnActivity", new {@x = "7",@num= TempData["n"], @cp=TempData["p"]})'>
+                        <img src="~/images/bored.png" alt="Bored" style="width:80%;" />
+                        <div class="container"><p>משועמם</p></div>
+                    </a>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <table align="center">
+        <tr>
+            <td style="background-color:white; width:10px; height:100px;"></td>
+            <td style="right:0;">
+                <div class="polaroid">
+                    <a href='@Url.Action("LoadingPlayers", "OnActivity", new {@x = "6",@num= TempData["n"], @cp=TempData["p"]})'>
+                        <img src="~/images/anxious.png" alt="Anxious" style="width:80%;" />
+                        <div class="container"><p>מודאג</p></div>
+                    </a>
+                </div>
+
+            </td>
+
+            <td align="center">
+                <div class="polaroid">
+                    <a href='@Url.Action("LoadingPlayers", "OnActivity", new {@x = "8",@num= TempData["n"], @cp=TempData["p"]})'>
+                        <img src="~/images/angry.png" alt="Angry" style="width:80%;" />
+                        <div class="container"><p>כועס</p></div>
+                    </a>
+                </div>
+            </td>
+
+        </tr>
+    </table>
+
+
+</div>

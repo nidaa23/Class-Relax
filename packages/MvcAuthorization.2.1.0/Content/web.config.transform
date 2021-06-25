@@ -1,0 +1,25 @@
+<configuration>
+  <configSections>
+    <section name="mvcAuthorization" type="MvcAuthorization.Configuration.AuthorizationConfiguration, MvcAuthorization"/>
+  </configSections>
+  <mvcAuthorization>
+    <areas>
+      <area>
+        <controllers>
+          <controller name="Home">
+            <actions>
+              <action name="Index">
+              </action>
+            </actions>
+          </controller>
+          <controller name="Account">
+            <actions>
+              <action name="LogOn">
+              </action>
+            </actions>
+          </controller>
+        </controllers>
+      </area>
+    </areas>
+  </mvcAuthorization>
+</configuration>

@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "צפיה בסרטון";
+   
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #centerPage {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+</style>
+<h2 style="text-align:center; margin-top:3%">הסרטון מוצג במסך</h2>
+<div id="centerPage">
+    <div>
+        <img src="~/images/logo-index-.png" />
+        <p style="color:black; font-size:18pt; font-weight:bold;">Class Relax</p>
+    </div>
+</div>
+<meta http-equiv="Refresh" content="80; url='@Url.Action("Feedback", "OnActivity", new { @is_ = TempData["is_"], @cp = TempData["cp"] })'" />

@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "test";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>test</h2>
+
+<iframe id="video1" width="200" height="100" src="https://www.youtube.com/embed/jzWt42aoePI ?enablejsapi=1" frameborder="0" allow="accelerometer;   encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+<iframe id="video2" width="200" height="100" src="https://www.youtube.com/embed/XnGgeXd23?enablejsapi=1" frameborder="0" allow="accelerometer;   encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+<iframe id="video3" width="200" height="100" src="https://www.youtube.com/embed/n808zAomXz0?enablejsapi=1" frameborder="0" allow="accelerometer;   encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+@Html.Hidden("I", @TempData["UserId"])
+@Html.Hidden("vd1", @TempData["id1"])
+@Html.Hidden("cp", @TempData["cp"])
+
+<script>
+    var tag = document.createElement('script');
+
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // create youtube player
+    var player1;
+    var player2;
+    var player3;
+    function onYouTubeIframeAPIReady() {
+        player1 = new YT.Player('video1');
+        player2 = new YT.Player('video2');
+        player3 = new YT.Player('video3');
+
+        player1.addEventListener("onReady", "onYouTubePlayerReady1");
+        player1.addEventListener("onStateChange", "onPlayerStateChange1");
+        player2.addEventListener("onReady", "onYouTubePlayerReady2");
+        player2.addEventListener("onStateChange", "onPlayerStateChange2");
+        player3.addEventListener("onReady", "onYouTubePlayerReady3");
+        player3.addEventListener("onStateChange", "onPlayerStateChange3");
+    }
+    var I = '2';
+    var cp = '853171368';
+    var vd1 ='23' ;
+    var vd2 ='25';
+    var vd3 ='28';
+
+
+    // when video ends
+    function onPlayerStateChange1(event) {
+        if (event.data === 0) {
+            alert('כולם דירגו 1');
+            var url_1 = $("#RedirectTo").val();
+
+
+            var u1 = '/OnActivity/EndActiv1?I=';
+            u1 += I;
+            u1 += '&vd1=';
+            u1 += vd1;
+            u1 += '&cp=';
+            u1 += cp;
+
+            location.href = u1;
+
+        }
+    }
+    function onPlayerStateChange2(event) {
+        if (event.data === 0) {
+            alert('כולם דירגו 2');
+
+
+
+            var u2 = '/OnActivity/EndActiv2?I=';
+            u2 += I;
+            u2 += '&vd2=';
+            u2 += vd2;
+            u2 += '&cp=';
+            u2 += cp;
+
+            location.href = u2;
+        }
+    }
+    function onPlayerStateChange3(event) {
+        if (event.data === 0) {
+            alert(' 3 כולם דירגו');
+
+
+            var u3 = '/OnActivity/EndActiv3?I=';
+            u3 += I;
+            u3 += '&vd3=';
+            u3 += vd3;
+            u3 += '&cp=';
+            u3 += cp;
+
+            location.href = u3;
+        }
+    }
+
+</script>

@@ -1,0 +1,39 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "טעינה ";
+}
+
+<style>
+    #centerPage {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+</style>
+<head>
+
+
+
+    <meta http-equiv="Refresh" content="5; url='@Url.Action("YourMood", "OnActivity", new {name=TempData["nameStudent"],num=TempData["idStudent"],cp=TempData["classPin"] })'" />
+</head>
+
+<html>
+
+
+<body>
+    <div id="centerPage">
+        <div>
+            <img src="~/images/logo-index-.png" />
+            <p style="color:black; font-size:18pt; font-weight:bold;">Class Relax</p>
+        </div>
+        <p>
+            <span dir="rtl" style="margin-top:3%; text-align:center"> אנחנו כאן לעזור לתלמידים ולמורים</span>
+            <br /><span>   לקחת פסק זמן ולהירגע</span>
+        </p>
+
+        <div><img src="~/images/loadingComp.gif" width="180" height="140" /></div>
+    </div>
+</body>
+</html>

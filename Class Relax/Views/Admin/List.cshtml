@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Class_Relax.Models.Video>
+
+
+@{
+    ViewBag.Title = "רשימת הסרטונים";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+</style>
+<body>
+
+    <div id="start">
+        <h2 style="text-align:center; padding-top:20px;">רשימת סרטונים</h2>
+
+
+        <table class="table table-hover table-primary">
+            <tr class="table-primary">
+
+                <th scope="row">
+                    Name
+                </th>
+                <th scope="row">
+                    Link
+                </th>
+                <th scope="row">
+                    Type
+                </th>
+                <th scope="row">
+                    Length
+                </th>
+                <th scope="row" width="120px">
+                    Tag 1, 2, 3
+                </th>
+                @*<th scope="row">
+                        Tag 2
+                    </th>
+                    <th scope="row">
+                        Tag 3
+                    </th>*@
+                <th scope="row">
+                    User's Tag
+                </th>
+                <th scope="row">
+                    Average Feedback
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr class="table-primary">
+                    <td class="table-primary" style="background-color:white; border:1px solid #cccccc;">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td class="table-primary" style="background-color:white; border:1px solid #cccccc;">
+                        @Html.DisplayFor(modelItem => item.Url)
+                    </td>
+
+                    <td class="table-primary" style="background-color:white; border:1px solid #cccccc;">
+                        @Html.DisplayFor(modelItem => item.Type)
+                    </td>
+                    <td class="table-primary" style="background-color:white; border:1px solid #cccccc;">
+                        @Html.DisplayFor(modelItem => item.Length)
+                    </td>
+                    <td class="table-primary" style="background-color:white; border:1px solid #cccccc;">
+                        @Html.DisplayFor(modelItem => item.Tag1)
+                        <br />
+                        @Html.DisplayFor(modelItem => item.Tag2)
+                        <br />
+                        @Html.DisplayFor(modelItem => item.Tag3)
+                    </td>
+
+                    <td class="table-primary" style="background-color:white; border:1px solid #cccccc;">
+                        @Html.DisplayFor(modelItem => item.MTag)
+                    </td>
+                    <td class="table-primary" style="background-color:white; border:1px solid #cccccc;">
+                        @Html.DisplayFor(modelItem => item.AvgFeedback)
+                    </td>
+
+
+                </tr>
+            }
+
+        </table>
+    </div>
+
+</body>

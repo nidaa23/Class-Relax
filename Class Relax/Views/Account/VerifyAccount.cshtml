@@ -1,0 +1,92 @@
+﻿@model Class_Relax.Models.RegisterViewModel
+@{
+    ViewBag.Title = "אימות חשבון";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<style lang="he">
+
+    #rect {
+        position: center;
+        width: 30%;
+        background: #fafafa;
+        margin-right: 350px;
+        border: thin;
+        border-style: solid;
+        border-color: #cccccc;
+        filter: drop-shadow(2 6 35px #f8f6f6);
+        display: block;
+        align-items: center;
+        justify-content: center;
+    }
+    #centerPage {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+    #dr {
+        direction: rtl !important;
+    }
+    @@media screen and (max-width: 700px) {
+        #rect {
+            float: right;
+            width: 100%;
+            height: 100%;
+            background: #fafafa;
+            margin-right: 350px;
+            border: thin;
+            border-style: solid;
+            filter: drop-shadow(2 6 35px #f8f6f6);
+            border-color: #78c2ad;
+            padding-right: 0px;
+            right: 0;
+            margin-right: 0;
+            margin: 0;
+        }
+
+        #fieldsTo {
+            color: black;
+            font-weight: 500 !important;
+            text-align: right;
+            font-family: "Montserrat", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+    }
+
+   
+  
+
+    #fieldsTo {
+        color: black;
+        font-weight: 500 !important;
+        text-align: center;
+        font-family: "Montserrat", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+</style>
+
+
+<p style="padding-top:15px!important"></p>
+<div id="centerPage">
+    <div class="alert alert-light">
+        <p style="font-weight:600!important;">ברוכים הבאים</p>
+        @if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+        {
+            <div id="fieldsTo">
+                <strong>בוצע בהצלחה!</strong><br />
+                החשבון שלך במערכת פעיל עכשיו, לחץ כאן
+
+                @Html.ActionLink(" לכניסה ", "Default", "Home")
+            </div>
+        }
+        <p></p>
+
+
+        <div>
+            <img src="~/images/logo-index-.png" />
+            <p style="color:black; font-size:18pt; font-weight:bold;">Class Relax</p>
+        </div>
+        </div>
+   
+    </div>

@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Title = "מספר הכיתה";
+    Layout = "~/Views/Shared/_Layout-User.cshtml";
+
+    TempData["Title"] = "מספר כיתה";
+}
+<link rel="stylesheet" href="~/Content/css/buttons.css">
+<style>
+
+    #rect {
+        position: center;
+        width: 60%;
+        background: #fafafa;
+        margin-right: 350px;
+        border: thin;
+        border-style: solid;
+        border-color: #cccccc;
+        filter: drop-shadow(2 6 35px #f8f6f6);
+        display: block;
+        align-items: center;
+        justify-content: center;
+    }
+
+    @@media (max-width: 767px) {
+        #rect {
+            float: right;
+            width: 280px;
+            height: 500px;
+            background: #fafafa;
+            margin-right: 350px;
+            border: thin;
+            border-style: solid;
+            filter: drop-shadow(2 6 35px #f8f6f6);
+            border-color: #78c2ad;
+            padding-right: 0px;
+            right: 0;
+            margin-right: 0;
+            margin: 0;
+        }
+   
+
+        #fieldsTo {
+            color: black;
+            font-weight: 500 !important;
+            text-align: right;
+            font-family: "Montserrat", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        h5 {
+            color: black;
+            font-size: 20pt;
+            font-weight: bold;
+        }
+    }
+
+    #centerPage {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    h5 {
+        color: black;
+        font-size: 30pt;
+        font-weight: bold;
+    }
+
+    #fieldsTo {
+        color: black;
+        font-weight: 500 !important;
+        text-align: center;
+        font-family: "Montserrat", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+</style>
+<div id="centerPage">
+    <div id="rect">
+        <p style="text-align:center; margin-top:3%" id="fieldsTo">מספר הכיתה </p>
+        <br />
+
+
+        <h5 style="text-align:center">@TempData["urPin"]</h5>
+        <div>
+
+            <div class="col-md-offset-2 col-md-10">
+                @{
+                    if (TempData["userId"] != null)
+                    {
+                        string userId = TempData["userId"].ToString();
+                        FormsAuthentication.SetAuthCookie(userId, true);
+                    }
+                }
+                <p style="padding-bottom:40px!important;"></p>
+                <div class="col-md-offset-2 col-md-10 " id="centerPage">
+                    <p style="margin-right:200px;">
+                        <input type="button" value="התחל" style="width:250px !important; margin:0 auto !important; display:block !important" class="btn btn-primary btn-lg btn-block" onclick="location.href='@this.Url.Action("WaitingForResults", "OnActivity",  new {@I=TempData["UserId"], @s_ = TempData["s"], @t_=TempData["t"],@l_=TempData["l"],@cp=TempData["urPin"] })'" />
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

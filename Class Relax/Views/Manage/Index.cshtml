@@ -1,0 +1,108 @@
+﻿@model Class_Relax.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage";
+    TempData["Title"] = "עדכון פרטים אישיים";
+    Layout = "~/Views/Shared/_Layout-User.cshtml";
+}
+<style>
+
+    #rect {
+        position: center;
+        width: 450px;
+        height: 500px;
+        background: #fafafa;
+        margin-right: 350px;
+        border: thin;
+        border-style: solid;
+
+        filter: drop-shadow(2 6 35px #f8f6f6);
+
+        border-color: #78c2ad;
+
+    }
+
+
+    #centerPage {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #fieldsTo {
+
+        color: black;
+        font-weight: 400 !important;
+        text-align: center;
+        font-family: "Montserrat", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #pdd {
+        text-align:center;
+      
+        margin-right:14%;
+       
+    }
+
+    @@media (max-width: 767px) {
+        #rect {
+            float:right;
+            
+            width:280px;
+            height: 500px;
+            background: #fafafa;
+            margin-right: 350px;
+            border: thin;
+            border-style: solid;
+            filter: drop-shadow(2 6 35px #f8f6f6);
+            border-color: #78c2ad;
+            padding-right:0px;
+            right:0;
+            margin-right:0;
+            margin:0;
+        }
+
+        #btnh{
+            width:190px;
+        }
+
+     
+
+        #pdd {
+            margin-right:10%;
+        }
+
+     
+    }
+</style>
+
+@{
+ 
+    TempData["userName_"] = @TempData["userName_"];
+}
+
+<div id="rect">
+    <div id="centerPage">
+
+
+
+     
+        <p style="padding-top:30px;"></p>
+        <div id="pdd">
+            <div class="col-md-offset-2 col-md-auto" style="align-self:center;font-size:smaller!important">
+                <input id="btnh" type="button" value="לחץ כאן לשינוי סיסמה" class="btn btn-primary btn-lg btn-block" style="background-color:white; color:black; border-color:#78c2ad!important;font-size:12pt!important" onclick="location.href='@Url.Action("ChangePassword", "Manage", new { @I = @TempData["I"], @name = @TempData["userName_"]})'" />
+            </div>
+            <p style="padding-bottom:15px;"></p>
+
+
+            <div class="col-md-offset-2 col-md-auto" style="align-self:center; font-size:smaller!important">
+                <input type="button"  id="btnh" value="לחץ כאן לשינוי שם מלא" class="btn btn-primary btn-lg btn-block" style="background-color:white; color:black;border-color:#78c2ad!important;font-size:12pt!important" onclick="location.href='@Url.Action("ChangeName", "Manage", new { @I = @TempData["I"], @name = @TempData["userName_"]})'" />
+            </div>
+        </div>
+            <p style="padding-top:100px;"></p>
+            <div><img src="~/images/logo-index-.png" /></div>
+        
+    </div>
+
+</div>
+  
+    @Html.Hidden("name", TempData["userName_"])

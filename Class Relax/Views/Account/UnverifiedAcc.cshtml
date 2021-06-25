@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "חשבון לא מאומת";
+
+
+ Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<style lang="he">
+    #centerPage {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+</style>
+
+
+<p style="padding-top:15px;"></p>
+<div id="centerPage">
+    <strong>ברוכים הבאים</strong>
+
+    <div>
+        <img src="~/images/logo-index-.png" />
+        <p style="color:black; font-size:18pt; font-weight:bold;">Class Relax</p>
+    </div>
+
+
+
+    <div class="alert alert-light">
+        <strong>החשבון שמקושר לכתובת מייל זו אינו מאומת</strong><br />
+        @TempData["email"]
+
+
+        <p>?לא קיבלת קישור במייל לאימות החשבון </p>
+        <span class="col-md-10" style="text-align:center!important;">
+          <a href="@Url.Action("UnverifiedAcc","Account", new {e=@TempData["email"] })" style=" text-align:center;margin:auto;"> לחץ פה כדי לשלוח שוב</a>
+        </span><br />
+    </div>
+
+
+
+</div>

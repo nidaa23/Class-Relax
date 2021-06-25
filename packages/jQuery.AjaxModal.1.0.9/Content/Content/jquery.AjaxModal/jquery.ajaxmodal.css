@@ -1,0 +1,64 @@
+.AjaxModal-overlay {
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  background: #000;
+  z-index: 999;
+}
+
+.AjaxModal-modal::-webkit-scrollbar {
+  display: none;
+}
+
+.AjaxModal-modal {
+  box-sizing: border-box;
+  background: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-height: 90%;
+  height: 60%;
+  border-radius: 5px;
+  overflow: auto;
+  z-index: 9999;
+  box-shadow: 0 0 50px 5px rgba(0, 0, 0, .25);
+  overflow: scroll;
+}
+
+.AjaxModal-modal .AjaxModal-top {
+  border-radius: 5px 5px 0px 0px;
+  padding: 0px 15px;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  height: 45px;
+  line-height: 45px;
+  font-size: 30px;
+  font-weight: 300;
+  cursor: default;
+  background: #e6e6e6;
+  border-bottom: solid 1px #d2d2d2;
+}
+
+.AjaxModal-modal .AjaxModal-nobg {
+  background: rgba(0,0,0,0) !important;
+  border-bottom: solid 1px rgba(0,0,0,0) !important;
+}
+
+.AjaxModal-modal .AjaxModal-content {
+  overflow: auto;
+  position: absolute;
+  top: 45px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.AjaxModal-modal .AjaxModal-close {
+  float: right;
+  cursor: pointer;
+  line-height: 40px;
+}

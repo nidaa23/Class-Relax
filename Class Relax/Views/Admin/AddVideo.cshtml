@@ -1,0 +1,521 @@
+﻿@model Class_Relax.Models.Videos
+
+@{
+
+    ViewBag.Title = "סרטון חדש";
+    TempData["Title"] = "הוספת סרטון חדש";
+    Layout = "~/Views/Shared/_Layout-Admin.cshtml";
+}
+<style lang="he">
+
+    #rectangle {
+        float: right;
+        width: 28%;
+        background: #fafafa;
+        margin-right: 350px;
+        border: thin;
+        border-style: solid;
+        border-color: #78c2ad;
+        filter: drop-shadow(0 0 25px #f8f6f6);
+    }
+
+    .text-f {
+        font-size: 14px;
+        color: #000000;
+        font-weight: 400;
+        font-family: 'Segoe UI';
+        text-align: right;
+        float: right;
+    }
+
+    input[type=text] {
+        border: none;
+        width: 250px;
+        border-bottom: 1px solid #78c2ad;
+    }
+
+    .fieldset {
+        overflow: hidden;
+    }
+
+    .radio-x {
+        display: inline-block;
+        float: right;
+    }
+
+    .radio-f {
+        display: inline-block;
+        float: right;
+    }
+
+    #form {
+        position: relative;
+        float: right;
+        margin-right: 10px;
+    }
+
+    .labs {
+        display: inline-block;
+        float: right;
+        clear: none;
+    }
+
+        .labs > input {
+            display: none;
+        }
+
+        .labs > .n {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 100%;
+            vertical-align: middle;
+            border: 1px solid #FFFFFF;
+            box-shadow: inset 0 0 0 3px #AAAAAA;
+            transition: .25s;
+        }
+
+        .labs > span {
+            display: inline-block;
+            font-size: 14px;
+            color: #000000;
+            font-weight: 400;
+            font-family: 'Segoe UI';
+            text-align: right;
+            direction: rtl;
+        }
+
+        .labs > input:checked + .n {
+            background: #9ecec0;
+        }
+
+
+            .labs > input:checked + .n:hover {
+                cursor: pointer;
+            }
+
+    .radio-2 {
+        direction: rtl;
+        display: block;
+    }
+
+    #centerPage {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .myButtonI {
+        -moz-box-shadow: 0px 1px 0px -1px #f0f7fa;
+        -webkit-box-shadow: 0px 1px 0px -1px #f0f7fa;
+        box-shadow: 0px 1px 0px -1px #f0f7fa;
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #60c8aa), color-stop(1, #339076));
+        background: -moz-linear-gradient(top, #60c8aa 5%, #339076 100%);
+        background: -webkit-linear-gradient(top, #60c8aa 5%, #339076 100%);
+        background: -o-linear-gradient(top, #60c8aa 5%, #339076 100%);
+        background: -ms-linear-gradient(top, #60c8aa 5%, #339076 100%);
+        background: linear-gradient(to bottom, #60c8aa 5%, #339076 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#60c8aa', endColorstr='#339076',GradientType=0);
+        background-color: #60c8aa;
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+        border-radius: 10px;
+        border: 1px solid #b6b2b2;
+        display: inline-block;
+        cursor: pointer;
+        color: #ffffff;
+        font-family: Arial;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 10px 80px;
+        text-decoration: none;
+        text-shadow: 0px -1px 0px #5b6178;
+    }
+
+        .myButtonI:hover {
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #339076), color-stop(1, #60c8aa));
+            background: -moz-linear-gradient(top, #339076 5%, #60c8aa 100%);
+            background: -webkit-linear-gradient(top, #339076 5%, #60c8aa 100%);
+            background: -o-linear-gradient(top, #339076 5%, #60c8aa 100%);
+            background: -ms-linear-gradient(top, #339076 5%, #60c8aa 100%);
+            background: linear-gradient(to bottom, #339076 5%, #60c8aa 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#019ad2', endColorstr='#33bdef',GradientType=0);
+            background-color: #339076;
+            color: #ffffff;
+        }
+
+    .was-validated .custom-control-input:valid ~ .custom-control-label, .custom-control-input.is-valid ~ .custom-control-label {
+        color: #56CC9D;
+    }
+
+        .was-validated .custom-control-input:valid ~ .custom-control-label::before, .custom-control-input.is-valid ~ .custom-control-label::before {
+            border-color: #56CC9D;
+        }
+
+    .was-validated .custom-control-input:valid ~ .valid-feedback,
+    .was-validated .custom-control-input:valid ~ .valid-tooltip, .custom-control-input.is-valid ~ .valid-feedback,
+    .custom-control-input.is-valid ~ .valid-tooltip {
+        display: block;
+    }
+
+    .was-validated .custom-control-input:valid:checked ~ .custom-control-label::before, .custom-control-input.is-valid:checked ~ .custom-control-label::before {
+        border-color: #7dd8b4;
+        background-color: #7dd8b4;
+    }
+
+    .was-validated .custom-control-input:valid:focus ~ .custom-control-label::before, .custom-control-input.is-valid:focus ~ .custom-control-label::before {
+        -webkit-box-shadow: 0 0 0 0.2rem rgba(86, 204, 157, 0.25);
+        box-shadow: 0 0 0 0.2rem rgba(86, 204, 157, 0.25);
+    }
+
+    .was-validated .custom-control-input:valid:focus:not(:checked) ~ .custom-control-label::before, .custom-control-input.is-valid:focus:not(:checked) ~ .custom-control-label::before {
+        border-color: #56CC9D;
+    }
+
+    .was-validated .custom-control-input:invalid ~ .custom-control-label, .custom-control-input.is-invalid ~ .custom-control-label {
+        color: #FF7851;
+    }
+
+        .was-validated .custom-control-input:invalid ~ .custom-control-label::before, .custom-control-input.is-invalid ~ .custom-control-label::before {
+            border-color: #FF7851;
+        }
+
+    .was-validated .custom-control-input:invalid ~ .invalid-feedback,
+    .was-validated .custom-control-input:invalid ~ .invalid-tooltip, .custom-control-input.is-invalid ~ .invalid-feedback,
+    .custom-control-input.is-invalid ~ .invalid-tooltip {
+        display: block;
+    }
+
+    .was-validated .custom-control-input:invalid:checked ~ .custom-control-label::before, .custom-control-input.is-invalid:checked ~ .custom-control-label::before {
+        border-color: #ffa084;
+        background-color: #ffa084;
+    }
+
+    .was-validated .custom-control-input:invalid:focus ~ .custom-control-label::before, .custom-control-input.is-invalid:focus ~ .custom-control-label::before {
+        -webkit-box-shadow: 0 0 0 0.2rem rgba(255, 120, 81, 0.25);
+        box-shadow: 0 0 0 0.2rem rgba(255, 120, 81, 0.25);
+    }
+
+    .was-validated .custom-control-input:invalid:focus:not(:checked) ~ .custom-control-label::before, .custom-control-input.is-invalid:focus:not(:checked) ~ .custom-control-label::before {
+        border-color: #FF7851;
+    }
+
+    .custom-radio .custom-control-label::before {
+        border-radius: 50%;
+    }
+
+    .custom-radio .custom-control-input:checked ~ .custom-control-label::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+    }
+
+    .custom-radio .custom-control-input:disabled:checked ~ .custom-control-label::before {
+        background-color: rgba(120, 194, 173, 0.5);
+    }
+
+    .custom-control {
+        position: relative;
+        display: block;
+        min-height: 1.5rem;
+        padding-left: 1.5rem;
+    }
+
+    .custom-control-inline {
+        display: -webkit-inline-box;
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+        margin-right: 1rem;
+    }
+
+    .custom-control-input {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+    }
+
+        .custom-control-input:checked ~ .custom-control-label::before {
+            color: #fff;
+            border-color: #78C2AD;
+            background-color: #78C2AD;
+        }
+
+        .custom-control-input:focus ~ .custom-control-label::before {
+            -webkit-box-shadow: 0 0 0 0.2rem rgba(120, 194, 173, 0.25);
+            box-shadow: 0 0 0 0.2rem rgba(120, 194, 173, 0.25);
+        }
+
+        .custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
+            border-color: #d0eae2;
+        }
+
+        .custom-control-input:not(:disabled):active ~ .custom-control-label::before {
+            color: #fff;
+            background-color: #f3faf8;
+            border-color: #f3faf8;
+        }
+
+        .custom-control-input:disabled ~ .custom-control-label {
+            color: #888;
+        }
+
+            .custom-control-input:disabled ~ .custom-control-label::before {
+                background-color: #f7f7f9;
+            }
+
+    .custom-control-label {
+        position: relative;
+        margin-bottom: 0;
+        vertical-align: top;
+    }
+
+        .custom-control-label::before {
+            position: absolute;
+            top: 0.25rem;
+            left: -1.5rem;
+            display: block;
+            width: 1rem;
+            height: 1rem;
+            pointer-events: none;
+            content: "";
+            background-color: #fff;
+            border: #aaa solid 1px;
+        }
+
+        .custom-control-label::after {
+            position: absolute;
+            top: 0.25rem;
+            left: -1.5rem;
+            display: block;
+            width: 1rem;
+            height: 1rem;
+            content: "";
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 50% 50%;
+        }
+
+    .custom-checkbox .custom-control-label::before {
+        border-radius: 0.4rem;
+    }
+
+    .custom-checkbox .custom-control-input:checked ~ .custom-control-label::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+    }
+
+    .custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::before {
+        border-color: #78C2AD;
+        background-color: #78C2AD;
+    }
+
+    .custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3e%3cpath stroke='%23fff' d='M0 2h4'/%3e%3c/svg%3e");
+    }
+
+    .custom-checkbox .custom-control-input:disabled:checked ~ .custom-control-label::before {
+        background-color: rgba(120, 194, 173, 0.5);
+    }
+
+    .custom-checkbox .custom-control-input:disabled:indeterminate ~ .custom-control-label::before {
+        background-color: rgba(120, 194, 173, 0.5);
+    }
+
+    .custom-radio .custom-control-label::before {
+        border-radius: 50%;
+    }
+
+    .custom-radio .custom-control-input:checked ~ .custom-control-label::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+    }
+
+    .custom-radio .custom-control-input:disabled:checked ~ .custom-control-label::before {
+        background-color: rgba(120, 194, 173, 0.5);
+    }
+
+    .myButtonI:active {
+        position: relative;
+        top: 1px;
+    }
+    @@media (max-width: 767px) {
+        #rectangle {
+            float: right;
+            width:100%;
+          
+            background: #fafafa;
+            margin-right: 350px;
+            border: thin;
+            border-style: solid;
+            filter: drop-shadow(2 6 35px #f8f6f6);
+            border-color: #78c2ad;
+            padding-right: 0px;
+            right: 0;
+            margin-right: 0;
+            margin: 0;
+        }
+
+        input[type=text] {
+            width: 180px !important;
+        }
+      
+
+
+    }
+</style>
+
+
+<div id="rectangle">
+    @if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+    {
+        if (ViewBag.Message != null)
+        {
+            <div class="alert alert-success">
+                <strong style="text-align:right;">@ViewBag.Message</strong>
+            </div>
+        }
+    }
+
+
+            <div>
+                @using (Html.BeginForm("AddVideo", "Admin", FormMethod.Post, new { @class = "form-horizontal", @style = "position: relative!important;float: right!important;margin-right: 10px!important;" }))
+                {
+
+
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary()
+
+                    <div class="form-horizontal">
+
+                        <div class="form-group" style=" padding-right:20px; ">
+                            <p class="text-f" style=" padding-right:10px; padding-top:20px; ">שם הסרטון </p>
+                            <div class="col-md-3">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "field-validation-valid text-danger", @style = "text-align:right; float:right;" })
+                            </div>
+                        </div>
+
+                        <div class="form-group" style=" padding-right:20px; ">
+                            <p class="text-f" style=" padding-right:10px; padding-top:5px; "> קישור לסרטון</p>
+                            <div class="col-md-3">
+                                @Html.EditorFor(model => model.Url, new { htmlAttributes = new { @class = "form-control", @placeholder = "Format:https://www.youtube.com/embed/" } })
+                                @Html.ValidationMessageFor(model => model.Url, "", new { @class = "field-validation-valid text-danger", @style = "text-align:right; float:right;" })
+                            </div>
+                        </div>
+
+                        <div style="padding-right:20px; float:right;">
+                            <p class="text-f" style=" padding-right:10px; padding-top:5px; ">אורך הסרטון </p>
+                            <br />
+
+                            <p style="padding-right:10px;" class="radio-x">
+                                @Html.RadioButtonFor(m => m.Length, "2 - 3", new { htmlAttributes = new { @class = "form-control" } })
+                                <span style="padding-right:1px; font-size:16px; font-weight:400;"> 3 - 2 </span>
+                                <span style="padding-right:20px;"></span>
+
+
+                                @Html.RadioButtonFor(m => m.Length, "3 - 5", new { htmlAttributes = new { @class = "form-control" } })<span span style="padding-right:1px; font-size:16px; font-weight:400;"> 5 - 3 </span>
+                                <span style="padding-right:20px;"></span>
+
+                                @Html.RadioButtonFor(m => m.Length, "5 - 10", new { htmlAttributes = new { @class = "form-control" } })<span span style="padding-right:1px; font-size:16px; font-weight:400;"> 10 - 5 </span>
+                                @Html.ValidationMessageFor(model => model.Length, "", new { @class = "field-validation-valid text-danger", @style = "text-align:right; float:right;" })
+                            </p>
+                        </div>
+                        <p></p>
+
+
+                        <div style="padding-right:20px; float:right">
+                            <p class="text-f" style="padding-right:10px; margin-right:auto; padding-top:5px; text-align:right; float:right; direction:rtl;">
+                                סוג הסרטון
+                            </p>
+                            <br />
+
+
+                            <p style="padding-right:10px;" class="radio-x ">
+
+                                @Html.RadioButtonFor(m => m.Type, "Music", new { htmlAttributes = new { @class = "form-control" } })<span style="padding-right:3px;"> מוזיקה </span>
+
+                                <span style="padding-right:20px;"></span>
+                                @Html.RadioButtonFor(m => m.Type, "Meditation", new { htmlAttributes = new { @class = "form-control" } })<span style="padding-right:3px;">מדיטציה </span>
+                                @Html.ValidationMessageFor(model => model.Type, "", new { @class = "field-validation-valid text-danger", @style = "text-align:right; float:right;" })
+                            </p>
+                        </div>
+                        <p></p>
+
+
+                        <div style=" padding-right:20px; float:right;">
+                            <p class="text-f" style="margin-right:10px; text-align:right;  padding-top:5px;">
+                                סגנון הסרטון
+                            </p>
+                            <br />
+
+
+                            <p class="radio-x" style="padding-right:10px;">
+
+                                @Html.RadioButtonFor(m => m.MTag, "Calm down", new { htmlAttributes = new { @class = "form-control" } }) <span style="padding-right:1px; font-size:medium"> הרגעה </span>
+
+                                <span style="padding-right:20px; "></span>
+
+                                @Html.RadioButtonFor(m => m.MTag, "Activate", new { htmlAttributes = new { @class = "form-control" } })<span style="padding-right:1px;"> הנעה </span>
+                                @Html.ValidationMessageFor(model => model.MTag, "", new { @class = "field-validation-valid text-danger", @style = "text-align:right; float:right;" })
+                            </p>
+
+                        </div>
+
+
+
+
+                        <p></p>
+                        <div class="form-group" style="padding-right:25px;">
+                            @Html.DropDownListFor(model => model.Tag1, new List<SelectListItem>
+                                                         { new SelectListItem { Text = "Happy", Value = "Happy"},
+                                                           new SelectListItem { Text = "Energetic", Value = "Energetic"},
+                                                           new SelectListItem { Text = "Good", Value = "Good"},
+                                                           new SelectListItem {Text = "Tired", Value="Tired"},
+                                                            new SelectListItem {Text = "Bored", Value="Bored"},
+                                                             new SelectListItem {Text = "Sad", Value="Sad"},
+                                                              new SelectListItem {Text = "Anxious", Value="Anxious"},
+                                                               new SelectListItem {Text = "Angry", Value="Angry"}
+
+                                                           }, "בחר בתגית ראשונה", new { @class = "form-control" })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.Tag1, "", new { @class = "field-validation-valid text-danger", @style = "text-align:right; float:right;" })
+                        <p></p>
+                        <div class="form-group" style=" padding-right:25px; ">
+                            @Html.DropDownListFor(model => model.Tag2, new List<SelectListItem>
+                                                        { new SelectListItem { Text = "Happy", Value = "Happy"},
+                                                           new SelectListItem { Text = "Energetic", Value = "Energetic"},
+                                                           new SelectListItem { Text = "Good", Value = "Good"},
+                                                           new SelectListItem {Text = "Tired", Value="Tired"},
+                                                            new SelectListItem {Text = "Bored", Value="Bored"},
+                                                             new SelectListItem {Text = "Sad", Value="Sad"},
+                                                              new SelectListItem {Text = "Anxious", Value="Anxious"},
+                                                               new SelectListItem {Text = "Angry", Value="Angry"}
+
+                                                           }, "בחר בתגית שניה", new { @class = "form-control" })
+                        </div>
+                        <p></p>
+                        <div class="form-group" style=" padding-right:25px; ">
+                            @Html.DropDownListFor(model => model.Tag3, new List<SelectListItem>
+                                                         { new SelectListItem { Text = "Happy", Value = "Happy"},
+                                                           new SelectListItem { Text = "Energetic", Value = "Energetic"},
+                                                           new SelectListItem { Text = "Good", Value = "Good"},
+                                                           new SelectListItem {Text = "Tired", Value="Tired"},
+                                                            new SelectListItem {Text = "Bored", Value="Bored"},
+                                                             new SelectListItem {Text = "Sad", Value="Sad"},
+                                                              new SelectListItem {Text = "Anxious", Value="Anxious"},
+                                                               new SelectListItem {Text = "Angry", Value="Angry"}
+
+                                                           }, "בחר בתגית שלישית", new { @class = "form-control" })
+                        </div>
+                        <p></p>
+
+                        <div id="centerPage" style="padding-top:10px;">
+                            <input type="submit" value="הוספת סרטון" class="myButtonI" />
+                        </div>
+
+                    </div>
+                    <p style="padding-bottom:15px!important"></p>
+                }
+            </div>
+</div>
+
+
+<script type="text/javascript"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

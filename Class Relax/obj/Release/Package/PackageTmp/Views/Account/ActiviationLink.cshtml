@@ -1,0 +1,42 @@
+﻿@model Class_Relax.Models.RegisterViewModel
+@{
+    ViewBag.Title = "קישור לאימות חשבון";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<style lang="he">
+    #centerPage {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+</style>
+
+
+<p style="padding-top:15px!important"></p>
+<div id="centerPage">
+    <strong>ברוכים הבאים</strong>
+
+   
+
+
+
+    <div class="alert alert-light">
+        <strong>בוצע בהצלחה!</strong><br />
+
+        @TempData["msg"]
+        <br />
+        @TempData["email"]
+        <p> נשלח לכתובת מייל שלך קישור על מנת להפעיל את החשבון</p>
+
+        <div>
+            <img src="~/images/logo-index-.png" />
+            <p style="color:black; font-size:18pt; font-weight:bold;">Class Relax</p>
+        </div>
+    </div>
+
+
+
+</div>

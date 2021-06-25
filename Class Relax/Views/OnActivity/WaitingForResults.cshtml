@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "המתנה לתוצאות";
+    TempData["Title"] = "ממתין לתוצאות";
+    Layout = "~/Views/Shared/_Layout-User.cshtml";
+}
+
+<style>
+
+    #rect {
+        position: center;
+        width: 750px;
+        height: 280px;
+        background: #fafafa;
+        margin-right: 350px;
+        border: thin;
+        border-style: solid;
+        border-color: #cccccc;
+        filter: drop-shadow(2 6 35px #f8f6f6);
+    }
+
+
+    #centerPage {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #fieldsTo {
+        color: black;
+        font-weight: 400 !important;
+        text-align: center;
+        font-family: "Montserrat", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    @@media (max-width: 767px) {
+        #rect {
+            float: right;
+            width: 280px;
+            height: 500px;
+            background: #fafafa;
+            margin-right: 350px;
+            border: thin;
+            border-style: solid;
+            filter: drop-shadow(2 6 35px #f8f6f6);
+            border-color: #78c2ad;
+            padding-right: 0px;
+            right: 0;
+            margin-right: 0;
+            margin: 0;
+        }
+    }
+</style>
+
+
+<head>
+    <meta http-equiv="Refresh" content="120;url='@Url.Action("LoadingVideos", "OnActivity", new {@I=TempData["UserId"], @s_ = TempData["s"], @t_ = TempData["t"], @l_ = TempData["l"], @cp = TempData["cp"] })'" />
+</head>
+<div id="centerPage">
+    <div id="rect">
+        <p style="padding-top:10px;"></p>
+        <p style="text-align:center; font-size:18pt;" id="fieldsTo">ממתין לתוצאות </p>
+
+
+
+
+        <meta http-equiv="Refresh" content="120;url='@Url.Action("LoadingVideos", "OnActivity", new {@I=TempData["UserId"], @s_ = TempData["s"], @t_ = TempData["t"], @l_ = TempData["l"], @cp = TempData["cp"] })'" />
+        <div><img src="~/images/landingCompoGr.gif" width="180" height="140" /></div>
+        <div>
+            <span id="time">02:00</span>
+
+        </div>
+
+    </div>
+</div>
+<script>
+
+
+    function startTimer(duration, display) {
+        var timer = duration, minutes, seconds;
+        setInterval(function () {
+            minutes = parseInt(timer / 60, 10)
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.textContent = minutes + ":" + seconds;
+            if (--timer < 0) {
+                timer = duration;
+            }
+
+        }, 1000);
+    }
+
+    window.onload = function () {
+        var fiveMinutes = 60 * 2,
+            display = document.querySelector('#time');
+        startTimer(fiveMinutes, display);
+    };
+</script>

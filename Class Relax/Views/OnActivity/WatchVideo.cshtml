@@ -1,0 +1,452 @@
+﻿
+@{
+
+    ViewBag.Title = "הצגת סרטון";
+    TempData["Title"] = " התוצאות";
+    Layout = "~/Views/Shared/_Layout-User.cshtml";
+}
+<style lang="he">
+
+    body {
+        height: auto;
+    }
+
+    th {
+        color: #000000;
+        font-size: x-small;
+        font-weight: 100;
+        text-align: center;
+    }
+
+    #blueTable {
+        border: 1px solid white;
+        text-align: center;
+        position: relative;
+    }
+
+    #rect {
+        position: relative;
+        width: 60%;
+        height: 20%;
+        float: right;
+        background: #fafafa;
+        margin-right: 350px;
+        border: thin;
+        border-style: solid;
+        border-color: #cccccc;
+        filter: drop-shadow(0 0 25px #f8f6f6);
+        padding-top: 50px;
+    }
+
+    #sumtable {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #blueTable th {
+        border: 1px solid #cccccc;
+        padding: 6px;
+    }
+
+    #blueTable td {
+        font-size: 15px;
+        border: 1px solid #cccccc;
+        padding: 6px;
+    }
+
+    @@media screen and (max-width: 700px) {
+
+        #blueTable {
+            position: relative;
+            display: block;
+            float: right;
+            margin-right: initial;
+        }
+
+        #rect {
+            position: relative;
+            float: right;
+            width: 160px;
+            height: 620px;
+            margin-right: initial;
+        }
+
+        #text2 {
+            padding-top: 600px;
+        }
+
+        #blueTable th {
+            border: 1px solid #cccccc;
+            padding: 2px;
+        }
+
+        #blueTable td {
+            font-size: 15px;
+            border: 1px solid #cccccc;
+            padding: 2px;
+        }
+
+        tr {
+            padding: 2px;
+            position: relative;
+        }
+    }
+
+
+    .vid {
+        border-radius: 35%;
+    }
+
+    .header {
+        background-color: #e6e6e6;
+        color: black;
+        font-size: 1.5em;
+        padding: 1rem;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+
+
+    .table-users {
+        /*border: 1px solid #c2c0c0;*/
+        -webkit-box-shadow: 2px 3px 2px 0px rgba(176,173,176,0.65);
+        -moz-box-shadow: 2px 3px 2px 0px rgba(176,173,176,0.65);
+        box-shadow: 2px 3px 2px 0px rgba(176,173,176,0.65);
+        position: relative;
+        margin: 1em auto;
+        width: 80%;
+    }
+
+    table {
+        width: 100%;
+        border: 1px solid #cccccc;
+        border-collapse: collapse;
+        color: black;
+    }
+        /*table td,table th {
+       color: black;
+       padding: 20px;
+    }*/
+
+        table td {
+            text-align: center;
+            vertical-align: middle;
+            color: black;
+        }
+
+    td:last-child {
+        font-size: 0.95em;
+        line-height: 1.4;
+        text-align: left;
+        color: black;
+    }
+
+    th {
+        color: black;
+        border-bottom: 2px solid #cccccc;
+        padding: 15px;
+        font-size: 15pt;
+    }
+
+
+
+
+    @@media screen and (max-width: 700px) {
+        table, tr, td {
+            display: block;
+        }
+
+
+            td:first-child {
+                position: relative;
+                top: 10%;
+                transform: translateY(-50%);
+            }
+
+        .table-users {
+            position: relative;
+        }
+
+            .table-users table {
+                width: 50%;
+                border: 0px;
+                border-collapse: collapse;
+                color: black;
+            }
+
+                .table-users table th {
+                    display: none;
+                }
+    }
+
+    tr {
+        padding: 10px;
+        position: relative;
+    }
+
+        tr:first-child {
+            display: none;
+        }
+
+
+
+    @@media screen and (max-width: 500px) {
+        .header {
+            background-color: transparent;
+            color: black;
+            font-size: 2em;
+            font-weight: 700;
+            padding: 0;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+        }
+
+
+
+        td:first-child {
+            background-color: #f7f7f7;
+            border-bottom: 1px solid #e6e6e6;
+            border-radius: 10px 10px 0 0;
+            position: relative;
+            top: 0;
+            transform: translateY(0);
+            width: 100%;
+        }
+
+        td:not(:first-child) {
+            margin: 0;
+            padding: 5px 1em;
+            width: 100%;
+        }
+
+            td:not(:first-child):before {
+                font-size: .8em;
+                padding-top: 0.3em;
+                position: relative;
+            }
+
+
+        td:last-child {
+            padding-bottom: 1rem !important;
+        }
+        /*tr {
+             background-color: white !important;
+             border: 1px solid #d1cfcf;
+             border-radius: 10px;
+             box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+             margin: 0.5rem 0;
+             padding: 0;
+         }*/
+    }
+</style>
+
+
+
+
+<div id="rect" class="aligncenter" style="display:inline-table; table-layout:fixed;">
+    <p style="text-align:center"> להלן התוצאות של מצבי הרוח שנבחרו </p>
+    <table align=center style="table-layout:fixed; height:180px; width:500px; border-spacing:5px; border-collapse: separate;" id="blueTable">
+        <tbody style=" border-spacing:5px;  border-collapse: separate;">
+            <tr style="display:table-row">
+                <td>
+                    <div id="sumtable">
+                        <p class="alignleft"><img src="~/images/hap-40.png" width="25" height="25" /></p>
+                        <p class="aligncenter">שמח</p>
+                        <p class="alignright">@TempData["happy"]</p>
+                    </div>
+
+                </td>
+                <td>
+                    <div id="sumtable">
+                        <p class="alignleft"><img src="~/images/good-40.png" width="25" height="25" /></p>
+                        <p class="aligncenter">בסדר</p>
+                        <p class="alignright">@TempData["good"]</p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div id="sumtable">
+                        <p class="alignleft"><img src="~/images/en-40.png" width="25" height="25" /></p>
+                        <p class="aligncenter">אנרגטי</p>
+                        <p class="alignright">@TempData["energetic"]</p>
+                    </div>
+                </td>
+                <td>
+                    <div id="sumtable">
+                        <p class="alignleft"><img src="~/images/sad-40.png" width="25" height="25" /></p>
+                        <p class="aligncenter">עצוב</p>
+                        <p class="alignright">@TempData["sad"]</p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div id="sumtable">
+                        <p class="alignleft"><img src="~/images/bored-40.png" width="25" height="25" /></p>
+                        <p class="aligncenter">משועמם</p>
+                        <p class="alignright">@TempData["bored"]</p>
+                    </div>
+                </td>
+                <td>
+                    <div id="sumtable">
+                        <p class="alignleft"><img src="~/images/anx-40.png" width="25" height="25" /></p>
+                        <p class="aligncenter">מודאג</p>
+                        <p class="alignright">@TempData["anxious"]</p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div id="sumtable">
+                        <p class="alignleft"><img src="~/images/tir-40.png" width="25" height="25" /></p>
+                        <p class="aligncenter">עיף</p>
+                        <p class="alignright">@TempData["tired"]</p>
+                    </div>
+                </td>
+                <td>
+                    <div id="sumtable">
+                        <p class="alignleft"><img src="~/images/ang-40.png" width="25" height="25" /></p>
+                        <p class="aligncenter">כועס</p>
+                        <p class="alignright">@TempData["angry"]</p>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p style="text-align:center; position:relative;" id="text2"> כעת בחרו סרטון לצפיה </p>
+</div>
+
+
+<div class="table-users" style="display:inline-table;">
+
+
+    <table border="1" style="table-layout:fixed;">
+
+
+        <tr style="display:table-row; font-size: 5pt; table-layout:fixed;">
+
+            <th style="font-size:10pt !important; font-weight:bold;"></th>
+            <th style="font-size:10pt !important; font-weight:bold;">שם הסרטון</th>
+            <th style="font-size:10pt !important; font-weight:bold;">סוג</th>
+            <th style="font-size:10pt !important; font-weight:bold;">קטגורית זמן</th>
+
+        </tr>
+
+
+        <tr>
+
+            <td><iframe id="video1" width="200" height="100" src="@TempData["v1"]" frameborder="0" allow="accelerometer;   encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
+            <td>@TempData["n1"]</td>
+            <td>@TempData["t1"] </td>
+            <td style="text-align:center">@TempData["d1"]</td>
+        </tr>
+
+        <tr>
+
+            <td><iframe id="video2" width="200" height="100" src="@TempData["v2"]" frameborder="0" allow="accelerometer;   encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
+            <td>@TempData["n2"]</td>
+            <td>@TempData["t2"] </td>
+            <td style="text-align:center">@TempData["d2"]</td>
+        </tr>
+
+        <tr>
+
+            <td><iframe id="video3" width="200" height="100" src="@TempData["v3"]" frameborder="0" allow="accelerometer;   encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
+            <td>@TempData["n3"]</td>
+            <td>@TempData["t3"] </td>
+            <td style="text-align:center">@TempData["d3"]</td>
+        </tr>
+
+
+    </table>
+</div>
+@Html.Hidden("RedirectTo", Url.Action("EndActiv1", "OnActivity"));
+@Html.Hidden("I", @TempData["UserId"])
+@Html.Hidden("vd1", @TempData["id1"])
+@Html.Hidden("vd2", @TempData["id2"])
+@Html.Hidden("vd3", @TempData["id3"])
+@Html.Hidden("cp", @TempData["cp"])
+
+<script>
+    var tag = document.createElement('script');
+
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // create youtube player
+    var player1;
+    var player2;
+    var player3;
+    function onYouTubeIframeAPIReady() {
+        player1 = new YT.Player('video1');
+        player2 = new YT.Player('video2');
+        player3 = new YT.Player('video3');
+
+        player1.addEventListener("onReady", "onYouTubePlayerReady1");
+        player1.addEventListener("onStateChange", "onPlayerStateChange1");
+        player2.addEventListener("onReady", "onYouTubePlayerReady2");
+        player2.addEventListener("onStateChange", "onPlayerStateChange2");
+        player3.addEventListener("onReady", "onYouTubePlayerReady3");
+        player3.addEventListener("onStateChange", "onPlayerStateChange3");
+    }
+    var I = $("#UserId").val();
+    var cp = $("#cp").val();
+    var vd1 = $("#vd1").val();
+    var vd2 = $("#vd2").val();
+    var vd3 = $("#vd3").val();
+
+
+    // when video ends
+    function onPlayerStateChange1(event) {
+        if (event.data === 0) {
+            alert('כולם דירגו 1');
+            var url_1 = $("#RedirectTo").val();
+
+
+            var u1 = '/OnActivity/EndActiv1?I=';
+            u1 += I;
+            u1 += '&vd1=';
+            u1 += vd1;
+            u1 += '&cp=';
+            u1 += cp;
+
+            location.href = u1;
+
+        }
+    }
+    function onPlayerStateChange2(event) {
+        if (event.data === 0) {
+            alert('כולם דירגו 2');
+
+
+
+            var u2 = '/OnActivity/EndActiv2?I=';
+            u2 += I;
+            u2 += '&vd2=';
+            u2 += vd2;
+            u2 += '&cp=';
+            u2 += cp;
+
+            location.href = u2;
+        }
+    }
+    function onPlayerStateChange3(event) {
+        if (event.data === 0) {
+            alert(' 3 כולם דירגו');
+
+
+            var u3 = '/OnActivity/EndActiv3?I=';
+            u3 += I;
+            u3 += '&vd3=';
+            u3 += vd3;
+            u3 += '&cp=';
+            u3 += cp;
+
+            location.href = u3;
+        }
+    }
+
+</script>

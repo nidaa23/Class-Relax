@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "קישור נשלח";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style lang="he" dir="rtl">
+    .dr {
+        direction: rtl !important;
+    }
+
+    #rect {
+        position: center;
+        width: 400px;
+        background: #fafafa;
+        margin-right: 350px;
+        border: thin;
+        border-style: solid;
+        border-color: #cccccc;
+        filter: drop-shadow(2 6 35px #f8f6f6);
+        display: block;
+        align-items: center;
+        justify-content: center;
+    }
+
+    @@media screen and (max-width: 700px) {
+        #rect {
+            float: right;
+            width: 100%;
+            background: #fafafa;
+            margin-right: 20px;
+            border: thin;
+            border-style: solid;
+            border-color: #78c2ad;
+            position: relative;
+            right: 0;
+            filter: drop-shadow(0 0 25px #f8f6f6);
+        }
+
+        #fieldsTo {
+            color: black;
+            font-weight: 500 !important;
+            text-align: right;
+            font-family: "Montserrat", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        h5 {
+            color: black;
+            font-size: 14pt;
+        }
+    }
+
+    #centerPage {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    h5{
+        color: black;
+        font-size: 14pt;
+    }
+
+    #fieldsTo {
+        color: black;
+        font-weight: 500 !important;
+        text-align: center;
+        font-family: "Montserrat", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+</style>
+
+<div style="margin-top:5%;" class="dr">
+
+    <div id="centerPage">
+        <div id="rect">
+            <div>
+                <br />
+                <h5>
+                    <span style="font-weight:300">
+                        נא לבדוק תיבת מייל!
+                    </span> <br />
+                    קישור לאיפוס סיסמה נשלח לכתובת מייל זו <br />
+
+                    <br />
+                    @TempData["email"]
+                </h5>
+                <div>
+                    <br /><p style="padding-bottom:15px;"></p>
+                    <img src="~/images/logo-index-.png" />
+                    <p style="color:black; font-size:18pt; font-weight:bold;">Class Relax</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

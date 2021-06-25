@@ -1,0 +1,56 @@
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\ApplicationInsights.config
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Class Relax.Tests.dll.config
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Class Relax.Tests.dll
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Class Relax.Tests.pdb
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Class Relax.dll
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Newtonsoft.Json.dll
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\System.Web.Helpers.dll
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\System.Web.Mvc.dll
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\System.Web.Razor.dll
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\System.Web.WebPages.dll
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\WebActivatorEx.dll
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Microsoft.Owin.dll
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\System.Web.Optimization.dll
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Owin.dll
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\EntityFramework.dll
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.dll
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Microsoft.Owin.Security.dll
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\MvcAuthorization.dll
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Class Relax.pdb
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Class Relax.dll.config
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Newtonsoft.Json.xml
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\System.Web.Helpers.xml
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\System.Web.Mvc.xml
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\System.Web.Razor.xml
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\System.Web.WebPages.xml
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Microsoft.Owin.xml
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\System.Web.Optimization.xml
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\EntityFramework.xml
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.xml
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Microsoft.Owin.Security.xml
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\bin\Debug\MvcAuthorization.pdb
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\obj\Debug\Class Relax.Tests.csprojAssemblyReference.cache
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\obj\Debug\Class Relax.Tests.csproj.CoreCompileInputs.cache
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\obj\Debug\Class Relax.Tests.csproj.CopyComplete
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\obj\Debug\Class Relax.Tests.dll
+C:\Users\krinawi pc\source\repos\Class Relax\Class Relax.Tests\obj\Debug\Class Relax.Tests.pdb

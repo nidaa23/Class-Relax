@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>@ViewBag.Title</title>
+    <!-- Bootstrap core CSS-->
+    <link href="~/Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="~/Content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Page level plugin CSS-->
+    <link href="~/Content/vendor/datatables/datatables.bootstrap4.css" rel="stylesheet">
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="~/Scripts/MicrosoftAjax.js" type="text/javascript"></script>
+    <script src="~/Scripts/MicrosoftMvcAjax.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js" type="text/javascript"></script>
+
+    <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Custom styles for this template-->
+    @Styles.Render("~/Content/css/sb-admin.min.css")
+    @Styles.Render("~/bundles/css")
+</head>
+
+<body id="page-top">
+
+    <nav dir="ltr" style="background-color:#78c2ad; color:white; display:block;" class="navbar static-top">
+
+        <a class="navbar-brand mr-1" dir="ltr" style="text-align:left!important; margin:0px; padding:initial !important;">Class Relax</a>
+
+        <!-- Navbar -->
+        <ul class="navbar-nav ml-auto ml-md-0">
+
+            <li class="nav-item">
+                <div style="text-align:center !important; font-size:11pt;width:100%; padding-top:0px;">@TempData["Title"]</div>
+            </li>
+
+        </ul>
+    </nav>
+
+    @Html.AntiForgeryToken()
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="sidebar navbar-nav" style="background: linear-gradient(to top, white 80%, #78c2ad 20%)!important; -webkit-box-shadow: inset 0px 2px 6px 0px rgb(187, 187, 187);
+box-shadow: inset 0px 2px 3px 0px rgb(128, 128, 128);">
+            <li class="nav-item item-menu">
+                <p>
+                    <i class="fa fa-user-circle" style="font-size:40px; padding-top:15px;" id="menuIt"></i>
+                </p><p></p><br /><p style="padding-top:20px;">
+                    <span class="name" id="disName" style="padding-right:35px; right:0;   text-overflow: ellipsis; white-space: nowrap;">
+                        שלום
+                        <br />@Session["UserFullName"]
+                    </span>
+                </p>
+
+            </li>
+            <li style="margin-top:30%"></li>
+            <li class="nav-item item-menu" style="right:0;">
+                <a href='@Url.Action("CreateClass", "Users")' class="nav-link" style="right:0;">
+                    <p>
+                        <i class="fa fa-plus-circle" style="right:0; margin-right:-50px;" id="menuIt"></i>
+
+                        <span class="name" style="padding-right:35px; right:0;   text-overflow: ellipsis; white-space: nowrap;">כיתה חדשה </span>
+                    </p>
+                </a>
+            </li>
+
+
+            <li class="nav-item item-menu" style="right:0;">
+                <a href="@Url.Action("PastClasses", "Users")" class="nav-link" style="right:0;">
+                    <p>
+                        <i class="fa fa-archive" style="right:0; margin-right:-50px;" id="menuIt"></i>
+                        <span class="name" style="padding-right:35px; right:0; text-overflow: ellipsis; white-space: nowrap;">ארכיון כיתות </span>
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item item-menu" style="right:0;">
+                <a href='@Url.Action("Index", "Manage")' class="nav-link" style="right:0;">
+                    <p>
+                        <i class="fa fa-gear" style="right:0; margin-right:-50px;" id="menuIt"></i>
+
+                        <span class="name" style="padding-right:35px; right:0;   text-overflow: ellipsis; white-space: nowrap;"> הגדרות</span>
+                    </p>
+                </a>
+            </li>
+
+            <li class="nav-item item-menu" style="right:0;">
+                <a href="@Url.Action("AddVideo", "Admin")" class="nav-link" style="right:0;">
+                    <p>
+                        <i class="fa fa-upload" style="right:0; margin-right:-50px;" id="menuIt"></i>
+                        <span class="name" style="padding-right:35px; right:0; text-overflow: ellipsis; white-space: nowrap;">העלאת סרטון </span>
+                    </p>
+                </a>
+            </li>
+
+
+            <li class="nav-item item-menu" style="right:0;">
+                <a href="@Url.Action("List", "Admin")" class="nav-link" style="right:0;">
+                    <p>
+                        <i class="fa fa-file-video-o" style="right:0; margin-right:-50px;" id="menuIt"></i>
+                        <span class="name" style="padding-right:35px; right:0; text-overflow: ellipsis; white-space: nowrap;"> סרטונים </span>
+                    </p>
+                </a>
+            </li>
+
+
+
+
+            <li class="nav-item item-menu" style="right:0px;">
+                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @style = "margin-right:0px!important;" }))
+                {
+                    <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()" style="right:0;">
+
+                        <p>
+                            <i class="fa fa-arrow-right" style=" margin-right:-50px;  right:0;" id="menuIt"></i>
+                            <span class="name" style="padding-right:35px; right:0;  text-overflow: ellipsis; white-space: nowrap;margin-right:0px!important;"> יציאה</span>
+                        </p>
+                    </a>
+                }
+            </li>
+
+            <li class="nav-item item-menu" style="right:0px;">
+            </li>
+
+        </ul>
+
+
+        <div id="content-wrapper">
+            <div class="container-fluid">
+
+
+
+                <div id="page-content"></div>
+                <div>@RenderBody()</div>
+            </div>
+
+        </div>
+        <!-- /.content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="~/Content/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="~/Content/js/sb-admin.min.js"></script>
+
+    @Scripts.Render("~/bundles/js")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @Scripts.Render("~/bundles/jqueryunobtrusive") @*For unobtrusive-ajax*@
+    @Scripts.Render("~/bundles/jqueryval") @*For validate and validate-unobtrusive*@
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+</body>
+</html>
+<script>
+
+
+
+        $(document).scroll(function(e) {
+            $('#info').html("document.scrollTop: " +
+                $(document).scrollTop() +
+                "<br />sidebar.height: " +
+                $('#sidebar').height() +
+                "<br />window.height: " +
+                $(window).height() +
+                "<br />sidebar.height-document.scrollTop: " +
+                ($('#sidebar').height() - $(document).scrollTop())
+            );
+        if ($('#sidebar').height() - $(document).scrollTop() < $(window).height())
+        $('#sidebar').css({"position":"fixed","bottom":0})
+    else
+            $('#sidebar').css({"position":"static"});
+});
+
+</script>

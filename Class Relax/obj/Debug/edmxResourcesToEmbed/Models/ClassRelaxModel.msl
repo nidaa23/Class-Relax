@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ClassRelaxModelStoreContainer" CdmEntityContainer="ClassRelaxDbContext">
+    <EntitySetMapping Name="Classes">
+      <EntityTypeMapping TypeName="ClassRelaxModel.Class">
+        <MappingFragment StoreEntitySet="Class">
+          <ScalarProperty Name="ClassPin" ColumnName="ClassPin" />
+          <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+          <ScalarProperty Name="NumOfStudents" ColumnName="NumOfStudents" />
+          <ScalarProperty Name="ClassAvgFeedback" ColumnName="ClassAvgFeedback" />
+          <ScalarProperty Name="IDVideo" ColumnName="IDVideo" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Style" ColumnName="Style" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="ClassRelaxModel.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="Nickname" ColumnName="Nickname" />
+          <ScalarProperty Name="ClassPin" ColumnName="ClassPin" />
+          <ScalarProperty Name="Mood" ColumnName="Mood" />
+          <ScalarProperty Name="Feedback" ColumnName="Feedback" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="ClassRelaxModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="ClassRelaxModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="ResetPwdCode" ColumnName="ResetPwdCode" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IsEmailVerified" ColumnName="IsEmailVerified" />
+          <ScalarProperty Name="ActiviationCode" ColumnName="ActiviationCode" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Videos">
+      <EntityTypeMapping TypeName="ClassRelaxModel.Video">
+        <MappingFragment StoreEntitySet="Video">
+          <ScalarProperty Name="IDVideo" ColumnName="IDVideo" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Format" ColumnName="Format" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Length" ColumnName="Length" />
+          <ScalarProperty Name="Tag1" ColumnName="Tag1" />
+          <ScalarProperty Name="Tag2" ColumnName="Tag2" />
+          <ScalarProperty Name="Tag3" ColumnName="Tag3" />
+          <ScalarProperty Name="MTag" ColumnName="MTag" />
+          <ScalarProperty Name="AvgFeedback" ColumnName="AvgFeedback" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="classFeedback" FunctionName="ClassRelaxModel.Store.classFeedback" />
+    <FunctionImportMapping FunctionImportName="sp_algGetVideoA1" FunctionName="ClassRelaxModel.Store.sp_algGetVideoA1" />
+    <FunctionImportMapping FunctionImportName="sp_algGetVideoA3" FunctionName="ClassRelaxModel.Store.sp_algGetVideoA3">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ClassRelaxModel.sp_algGetVideoA3_Result">
+          <ScalarProperty Name="IDVideo" ColumnName="IDVideo" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_algGetVideoB1" FunctionName="ClassRelaxModel.Store.sp_algGetVideoB1">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ClassRelaxModel.sp_algGetVideoB1_Result">
+          <ScalarProperty Name="IDVideo" ColumnName="IDVideo" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="AvgFeedback" ColumnName="AvgFeedback" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_algGetVideoC1" FunctionName="ClassRelaxModel.Store.sp_algGetVideoC1" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="ClassRelaxModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_classMood" FunctionName="ClassRelaxModel.Store.sp_classMood">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ClassRelaxModel.sp_classMood_Result">
+          <ScalarProperty Name="Mood" ColumnName="Mood" />
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="ClassRelaxModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_deleteStudentFromClass" FunctionName="ClassRelaxModel.Store.sp_deleteStudentFromClass" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="ClassRelaxModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="ClassRelaxModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ClassRelaxModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="ClassRelaxModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ClassRelaxModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="ClassRelaxModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_updateAVGFeedback" FunctionName="ClassRelaxModel.Store.sp_updateAVGFeedback" />
+    <FunctionImportMapping FunctionImportName="sp_updateNumOfStudents" FunctionName="ClassRelaxModel.Store.sp_updateNumOfStudents" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="ClassRelaxModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="usp_class_insert" FunctionName="ClassRelaxModel.Store.usp_class_insert" />
+    <FunctionImportMapping FunctionImportName="usp_student_insert" FunctionName="ClassRelaxModel.Store.usp_student_insert" />
+    <FunctionImportMapping FunctionImportName="usp_thestudent_insert" FunctionName="ClassRelaxModel.Store.usp_thestudent_insert" />
+    <FunctionImportMapping FunctionImportName="videoFeedback" FunctionName="ClassRelaxModel.Store.videoFeedback" />
+    <FunctionImportMapping FunctionImportName="LoginByUsernamePassword" FunctionName="ClassRelaxModel.Store.LoginByUsernamePassword">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ClassRelaxModel.LoginByUsernamePassword_Result">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetVideoA1" FunctionName="ClassRelaxModel.Store.sp_algGetVideoA1" />
+  </EntityContainerMapping>
+</Mapping>

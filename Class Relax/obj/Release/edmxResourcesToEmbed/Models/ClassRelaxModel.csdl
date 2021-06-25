@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ClassRelaxModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Class">
+    <Key>
+      <PropertyRef Name="ClassPin" />
+    </Key>
+    <Property Name="ClassPin" Type="Int64" Nullable="false" />
+    <Property Name="ClassName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NumOfStudents" Type="Int32" />
+    <Property Name="ClassAvgFeedback" Type="Double" />
+    <Property Name="IDVideo" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="Duration" Type="Int32" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Style" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Class_Users" FromRole="Class" ToRole="Users" />
+    <NavigationProperty Name="Video" Relationship="Self.FK_Class_Video" FromRole="Class" ToRole="Video" />
+    <NavigationProperty Name="Students" Relationship="Self.FK_Student_Class" FromRole="Class" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="StudentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nickname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClassPin" Type="Int64" Nullable="false" />
+    <Property Name="Mood" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Feedback" Type="Int32" />
+    <NavigationProperty Name="Class" Relationship="Self.FK_Student_Class" FromRole="Student" ToRole="Class" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsEmailVerified" Type="Boolean" Nullable="false" />
+    <Property Name="ActiviationCode" Type="Guid" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Classes" Relationship="Self.FK_Class_Users" FromRole="Users" ToRole="Class" />
+    <Property Name="ResetPwdCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Video">
+    <Key>
+      <PropertyRef Name="IDVideo" />
+    </Key>
+    <Property Name="IDVideo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Format" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Length" Type="Int32" Nullable="false" />
+    <Property Name="Tag1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Tag2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Tag3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MTag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AvgFeedback" Type="Double" />
+    <NavigationProperty Name="Classes" Relationship="Self.FK_Class_Video" FromRole="Video" ToRole="Class" />
+  </EntityType>
+  <Association Name="FK_Class_Users">
+    <End Role="Users" Type="ClassRelaxModel.User" Multiplicity="1" />
+    <End Role="Class" Type="Self.Class" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Class">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Class_Video">
+    <End Role="Video" Type="Self.Video" Multiplicity="1" />
+    <End Role="Class" Type="Self.Class" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Video">
+        <PropertyRef Name="IDVideo" />
+      </Principal>
+      <Dependent Role="Class">
+        <PropertyRef Name="IDVideo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Class">
+    <End Role="Class" Type="Self.Class" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="ClassPin" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="ClassPin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ClassRelaxDbContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Classes" EntityType="Self.Class" />
+    <EntitySet Name="Students" EntityType="Self.Student" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Users" EntityType="ClassRelaxModel.User" />
+    <EntitySet Name="Videos" EntityType="Self.Video" />
+    <AssociationSet Name="FK_Class_Users" Association="Self.FK_Class_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Class" EntitySet="Classes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Class_Video" Association="Self.FK_Class_Video">
+      <End Role="Video" EntitySet="Videos" />
+      <End Role="Class" EntitySet="Classes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Class" Association="Self.FK_Student_Class">
+      <End Role="Class" EntitySet="Classes" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+    <FunctionImport Name="classFeedback">
+      <Parameter Name="ClassPin" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_algGetVideoA1">
+      <Parameter Name="ClassPin" Mode="In" Type="Int32" />
+      <Parameter Name="Type" Mode="In" Type="String" />
+      <Parameter Name="MTag" Mode="In" Type="String" />
+      <Parameter Name="Length" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_algGetVideoA3" ReturnType="Collection(ClassRelaxModel.sp_algGetVideoA3_Result)">
+      <Parameter Name="ClassPin" Mode="In" Type="Int32" />
+      <Parameter Name="Type" Mode="In" Type="String" />
+      <Parameter Name="MTag" Mode="In" Type="String" />
+      <Parameter Name="Length" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_algGetVideoB1" ReturnType="Collection(ClassRelaxModel.sp_algGetVideoB1_Result)">
+      <Parameter Name="ClassPin" Mode="In" Type="Int32" />
+      <Parameter Name="Type" Mode="In" Type="String" />
+      <Parameter Name="MTag" Mode="In" Type="String" />
+      <Parameter Name="Length" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_algGetVideoC1">
+      <Parameter Name="ClassPin" Mode="In" Type="Int32" />
+      <Parameter Name="Type" Mode="In" Type="String" />
+      <Parameter Name="MTag" Mode="In" Type="String" />
+      <Parameter Name="Length" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_classMood" ReturnType="Collection(ClassRelaxModel.sp_classMood_Result)">
+      <Parameter Name="ClassPin" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_deleteStudentFromClass">
+      <Parameter Name="pinclass" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(ClassRelaxModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(ClassRelaxModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_updateAVGFeedback">
+      <Parameter Name="ClassPin" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_updateNumOfStudents">
+      <Parameter Name="ClassPin" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="usp_class_insert">
+      <Parameter Name="ClassPin" Mode="In" Type="Int64" />
+      <Parameter Name="ClassName" Mode="In" Type="String" />
+      <Parameter Name="NumOfStudents" Mode="In" Type="Int32" />
+      <Parameter Name="AvgFeedback" Mode="In" Type="Double" />
+      <Parameter Name="IDVideo" Mode="In" Type="Int32" />
+      <Parameter Name="Date" Mode="In" Type="DateTime" />
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="Duration" Mode="In" Type="Int32" />
+      <Parameter Name="Type" Mode="In" Type="String" />
+      <Parameter Name="Style" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="usp_student_insert">
+      <Parameter Name="Nickname" Mode="In" Type="String" />
+      <Parameter Name="ClassPin" Mode="In" Type="Int64" />
+      <Parameter Name="Mood" Mode="In" Type="String" />
+      <Parameter Name="Feedback" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_thestudent_insert">
+      <Parameter Name="Nickname" Mode="In" Type="String" />
+      <Parameter Name="ClassPin" Mode="In" Type="Int64" />
+      <Parameter Name="Mood" Mode="In" Type="String" />
+      <Parameter Name="Feedback" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="videoFeedback">
+      <Parameter Name="videoID" Mode="In" Type="Int32" />
+      <Parameter Name="ClassPin" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="LoginByUsernamePassword" ReturnType="Collection(ClassRelaxModel.LoginByUsernamePassword_Result)">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetVideoA1" ReturnType="Collection(Int32)">
+      <Parameter Name="ClassPin" Mode="In" Type="Int32" />
+      <Parameter Name="Type" Mode="In" Type="String" />
+      <Parameter Name="MTag" Mode="In" Type="String" />
+      <Parameter Name="Length" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_algGetVideoA3_Result">
+    <Property Type="Int32" Name="IDVideo" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="String" Name="Url" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_algGetVideoB1_Result">
+    <Property Type="Int32" Name="IDVideo" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="String" Name="Url" Nullable="false" />
+    <Property Type="Double" Name="AvgFeedback" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_classMood_Result">
+    <Property Type="String" Name="Mood" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Column1" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="LoginByUsernamePassword_Result">
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="Username" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="false" />
+  </ComplexType>
+</Schema>

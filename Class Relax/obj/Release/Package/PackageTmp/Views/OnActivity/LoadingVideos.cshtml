@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "טוען סרטונים";
+    TempData["Title"] = "טוען תוצאות וסרטונים להצגה";
+}
+
+<style>
+
+    #rect {
+        position: center;
+        width: 750px;
+        height: 280px;
+        background: #fafafa;
+        margin-right: 350px;
+        border: thin;
+        border-style: solid;
+        border-color: #cccccc;
+        filter: drop-shadow(2 6 35px #f8f6f6);
+    }
+    @@media (max-width: 767px) {
+        #rect {
+            float: right;
+            width: 280px;
+            height: 500px;
+            background: #fafafa;
+            margin-right: 350px;
+            border: thin;
+            border-style: solid;
+            filter: drop-shadow(2 6 35px #f8f6f6);
+            border-color: #78c2ad;
+            padding-right: 0px;
+            right: 0;
+            margin-right: 0;
+            margin: 0;
+        }
+    }
+
+    #centerPage {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #fieldsTo {
+        color: black;
+        font-weight: 400 !important;
+        text-align: center;
+        font-family: "Montserrat", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+</style>
+<head>
+    <meta http-equiv="Refresh" content="30;" />
+
+</head>
+<div id="centerPage">
+    <div id="rect">
+        <p style="padding-top:10px;"></p>
+        <p style="text-align:center; " id="fieldsTo"> ... טוען תוצאות, מיד המערכת תציג סרטונים </p>
+
+        <div><img src="~/images/logo-index-.png" /></div>
+
+    </div>
+
+</div>

@@ -1,0 +1,284 @@
+﻿@model IEnumerable<Class_Relax.Models.Class>
+@{
+    ViewBag.Title = "ארכיון";
+    Layout = "~/Views/Shared/_Layout-User.cshtml";
+    TempData["Title"] = "ארכיון הכיתות";
+}
+
+<style>
+    #mood-results, table {
+        margin: 0px auto;
+    }
+
+    #mood-results, table, .greyGridTable {
+        table-layout: fixed;
+        border: 2px solid #CCCCCC;
+        width: 550px;
+        height: 190px;
+        border-collapse: collapse;
+    }
+
+        #mood-results, table, .greyGridTable td {
+            border: 1px solid #CCCCCC;
+            padding: 4px 7px;
+        }
+
+        #mood-results, table, .greyGridTable tbody tr td {
+            text-align: center;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+    body {
+        background-color: white;
+        box-sizing: border-box;
+    }
+
+    .header {
+        background-color: #398B93;
+        color: white;
+        font-size: 1.5em;
+        padding: 1rem;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    a img {
+        float: right;
+    }
+
+    .table-users {
+        border: 1px solid #cccccc;
+        -webkit-box-shadow: 2px 3px 2px 0px rgba(176,173,176,0.65);
+        -moz-box-shadow: 2px 3px 2px 0px rgba(176,173,176,0.65);
+        box-shadow: 2px 3px 2px 0px rgba(176,173,176,0.65);
+        max-width: calc(100% - 2em);
+        margin: 1em auto;
+        padding-right: 220px;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .image {
+        float: right;
+    }
+
+    .mood {
+        align-content: center;
+    }
+
+    .num-percent {
+        float: left;
+    }
+
+    .table-users, table {
+        width: 100%;
+        color: black;
+    }
+
+    td {
+        text-align: center;
+        vertical-align: right;
+        border-bottom: 1px solid #cccccc;
+        padding-bottom: 6px;
+        padding-top: 3px;
+        padding-right: 2px;
+    }
+
+    tr td:last-child {
+        font-size: 0.95em;
+        line-height: 1.4;
+        text-align: right;
+        padding-right: 15px;
+    }
+
+
+
+    th {
+        background-color: rgba(176,173,176,0.65);
+        padding: 15px;
+        font-weight: 500;
+        border-bottom: 1px solid #cccccc;
+    }
+
+    tr {
+        background-color: white;
+    }
+
+
+
+    @@media screen and (max-width: 700px) {
+        table, tr, td {
+            display: block;
+        }
+
+
+            tr td:first-child {
+                position: absolute;
+                top: 5%;
+                border-bottom: 1px solid #cccccc;
+                transform: translateY(-50%);
+                width: 100px;
+            }
+
+            tr td:not(:first-child) {
+                clear: both;
+                margin-left: 100px;
+                padding: 4px 20px 4px 90px;
+                position: relative;
+                text-align: left;
+                border-bottom: 1px solid #cccccc;
+            }
+
+                tr td:not(:first-child):before {
+                    color: #398B93;
+                    content: '';
+                    display: block;
+                    left: 0;
+                    position: absolute;
+                }
+
+
+        tr {
+            padding: 25px;
+            position: relative;
+        }
+
+            tr td:first-child {
+                display: none;
+            }
+    }
+
+    @@media screen and (max-width: 500px) {
+        .header {
+            background-color: transparent;
+            color: #398B93;
+            font-size: 2em;
+            font-weight: 700;
+            padding: 0;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+        }
+
+
+
+        tr td:nth-child(1) {
+            background-color: #398B93;
+            border-bottom: 1px solid #398B93;
+            border-radius: 50% 50% 0 0;
+            position: relative;
+            top: 0;
+            transform: translateY(0);
+            width: 100%;
+        }
+
+        tr td:not(:first-child) {
+            margin: 0;
+            padding: 5px 1em;
+            width: 100%;
+        }
+
+            tr td:not(:first-child):before {
+                font-size: .8em;
+                padding-top: 0.3em;
+                position: relative;
+            }
+
+        tr td:last-child {
+            padding-bottom: 1rem !important;
+        }
+
+
+        tr {
+            background-color: white !important;
+            border: 1px solid #398B93;
+            border-radius: 50%;
+            box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+            margin: 0.5rem 0;
+            padding: 0;
+        }
+
+        .table-users {
+            border: none;
+            box-shadow: none;
+            overflow: visible;
+        }
+    }
+</style>
+
+<div style="padding-top:20px;">
+    <h2 style="text-align:center; padding-top:10px;"></h2>
+
+    <div class="table-users">
+        <table cellspacing="0">
+            <tr>
+
+                <th scope="row">
+                    מספר
+                </th>
+                <th scope="row">
+                    שם
+                </th>
+                <th scope="row">
+                    תאריך
+                </th>
+                <th scope="row">
+                    מספר תלמידים
+                </th>
+                <th scope="row" width="120px">
+                    ממוצע הפידבקים
+                </th>
+
+                <th scope="row">
+                    מספר סרטון
+                </th>
+                <th scope="row">
+                    משך זמן
+                </th>
+                <th scope="row">
+                    סוג
+                </th>
+                <th scope="row">
+                    סגנון
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr class="table-primary">
+                    <td style="background-color:white !important; border:1px solid #cccccc;">
+                        @Html.DisplayFor(modelItem => item.ClassPin)
+                    </td>
+                    <td style="background-color:white!important ; border:1px solid #cccccc;">
+                        @Html.DisplayFor(modelItem => item.ClassName)
+                    </td>
+
+                    <td style="background-color:white!important ; border:1px solid #cccccc;">
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td style="background-color:white!important ; border:1px solid #cccccc;">
+                        @Html.DisplayFor(modelItem => item.NumOfStudents)
+                    </td>
+                    <td style="background-color:white!important ; border:1px solid #cccccc;">
+                        @Html.DisplayFor(modelItem => item.ClassAvgFeedback)
+
+                    </td>
+
+                    <td style="background-color:white!important ; border:1px solid #cccccc;">
+                        @Html.DisplayFor(modelItem => item.IDVideo)
+                    </td>
+                    <td style="background-color:white!important ; border:1px solid #cccccc;">
+                        @Html.DisplayFor(modelItem => item.Duration)
+                    </td>
+                    <td style="background-color:white!important ; border:1px solid #cccccc;">
+                        @Html.DisplayFor(modelItem => item.Type)
+                    </td>
+                    <td style="background-color:white!important ; border:1px solid #cccccc;">
+                        @Html.DisplayFor(modelItem => item.Style)
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div>
