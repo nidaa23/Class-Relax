@@ -1,2 +1,2 @@
 # Class-Relax
-ASP.MVC Project
+A web app for classroom activity that assists with class balance, using ASP.MVC
